@@ -99,7 +99,7 @@ The agent only answers when it has enough information — otherwise, it calls to
 
 -   Upload **multiple resumes** (`.pdf`)
 -   **Dynamic section detection** using regex
--   Uses **OpenAI GPT-3.5** for question answering
+-   Uses **OpenAI GPT-3.5**(Can use any model from API) for question answering
 -   **LangGraph** agent handles tool use, memory, and transitions
 -   Clean and **formal HR assistant tone**
 -   Follows strict **no hallucination policy** — fallback if info not in resume
@@ -161,10 +161,13 @@ To deploy on Hugging Face Spaces:
 4.  Deploy
 
 ---
+## License
+
+This project is licensed under the [Apache 2.0 License](LICENSE).  
+You are free to use, modify, and distribute it, provided that proper attribution is given and license terms are followed.
+
+---
 ## Acknowledgements
 
--   LangChain
--   LangGraph
--   Gradio
--   OpenAI
--   ChromaDB
+- [LangChain](https://python.langchain.com/docs/tutorials/rag/)
+- [Rag from Scratch](https://github.com/langchain-ai/rag-from-scratch) 
