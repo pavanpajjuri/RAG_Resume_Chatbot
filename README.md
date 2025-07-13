@@ -1,12 +1,12 @@
 # Resume Q&A Chatbot with LangChain + LangGraph + Gradio
 
-A production-ready Resume Question Answering (Q&A) chatbot built with **LangChain**, **LangGraph**, **Gradio**, and **Chroma vector store**. This app allows recruiters, hiring managers, or job seekers to **ask natural language questions** about uploaded resume PDFs and get **context-grounded, reliable answers** using Retrieval-Augmented Generation (RAG).
+A production-ready Resume Question Answering (Q&A) chatbot built with **LangChain**, **LangGraph**, **Gradio**, and **Chroma vector store**. This app allows recruiters, hiring managers, or job seekers to **ask natural language questions** about uploaded resume PDFs and get **context-grounded, reliable answers** using Retrieval-Augmented Generation (RAG). The system combines vector-based semantic search with a powerful LLM (Open AI's GPT) layer for clean, meaningful language generation, ensuring responses are both accurate and professionally phrased.
 
-> Supports multiple PDF resumes
-> Uses LangGraph’s tool-using agent with memory
-> Dynamic section detection and chunking
-> Stateless Gradio interface, shareable via Hugging Face Spaces
-> Clean, HR-friendly output formatting
+- Supports multiple PDF resumes
+- Uses LangGraph’s tool-using agent with memory
+- Dynamic section detection and chunking
+- Stateless Gradio interface, shareable via Hugging Face Spaces
+- Clean, HR-friendly output formatting
 
 
 ---
