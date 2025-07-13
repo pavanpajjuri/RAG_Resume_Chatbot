@@ -73,11 +73,11 @@ The RAG pipeline is powered by a **LangGraph agent**, designed as a stateful and
 - The LangGraph wiring determines which node comes next:
   - If the LLM decides **not** to use a tool:
     ```
-    query_or_respond ───▶ END
+    query_or_respond --> END
     ```
   - If the LLM **uses** the retrieval tool:
     ```
-    query_or_respond ─▶ tools ─▶ generate ─▶ END
+    query_or_respond --> tools --> generate --> END
     ```
 
 #### Why This Matters
