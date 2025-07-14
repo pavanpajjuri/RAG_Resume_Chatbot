@@ -104,6 +104,7 @@ The agent only answers when it has enough information — otherwise, it calls to
 -   Clean and **formal HR assistant tone**
 -   Follows strict **no hallucination policy** — fallback if info not in resume
 -   Supports **persistent memory** using `MemorySaver`
+-   Can handle multiple sessions without overlap (although limited)
 
 ---
 ## Requirements
@@ -142,11 +143,11 @@ Try questions like:
 | :--------------------------------------- | :---------------------------------------------------------- |
 | `build_rag_pipeline()`                   | Loads PDFs, splits into chunks, builds Chroma vector store  |
 | `split_resume_by_detected_sections()`    | Uses regex to detect section headers dynamically            |
-| `retrieve()`                             | ToolNode tool to fetch relevant resume chunks               |
-| `query_or_respond()`                     | LangGraph decision node — calls retrieve if needed          |
+| `make_retrieve_tool()`                   | ToolNode tool to fetch relevant resume chunks               |
+| `create_graph_with_fresh_memory()`       | LangGraph to create graph and calls retrieve if needed      |
 | `generate()`                             | Final answer generation using context and LLM               |
-| `resume_chatbot()`                       | Gradio callback to handle uploads, pipeline, and chat       |
-
+| `handle_resume_upload()`                 | Handles Resume Upload and initiates chunking and Embedding  |
+| `resume_chat_turn()`                     | Interface for Chatbot from user and assistant               |
 
 ---
 ## Deployment
@@ -159,6 +160,17 @@ To deploy on Hugging Face Spaces:
     -   `requirements.txt`
 3.  Set your environment variables via “Settings” → “Secrets”
 4.  Deploy
+
+
+---
+## Current Main Bottlenecks:
+
+1. Hardware Resources (CPU/RAM)
+- The app runs on limited CPU and RAM on free-tier hosting platforms. Simultaneous large PDF uploads can exhaust memory, causing the application to crash. Heavy processing during document chunking also slows down response times for all users.
+2. Gradio Request Queue
+- Gradio's built-in user queue can overflow during periods of high traffic. If many users submit requests while the agent is busy, the queue will fill up. New users will be temporarily locked out and see a "Too much traffic" error.
+3. External API Rate Limits
+- The application relies on a single OpenAI API key with requests-per-minute limits. A sudden burst of concurrent user activity can easily exceed these limits. This will cause OpenAI to block further requests, leading to failed chatbot responses.
 
 ---
 ## License
