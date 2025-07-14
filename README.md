@@ -162,6 +162,11 @@ To deploy on Hugging Face Spaces:
 4.  Deploy
 
 
+
+https://github.com/user-attachments/assets/6ab55b06-436e-42dd-b24d-24431c5c1007
+
+
+
 ---
 ## Current Main Bottlenecks:
 
